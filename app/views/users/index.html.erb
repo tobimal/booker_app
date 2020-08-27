@@ -1,0 +1,56 @@
+
+
+  <div class="container">
+  <div class="row">
+  <div class="col-xs-3">
+    <h2>User info</h2>
+        <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+        <table class='table table striped'>
+            <tr>
+                <th>name</th>
+         <th><%= current_user.name %></th>
+    </tr>
+      <tr>
+        <th>Introduction</th>
+        <th><%= current_user.introduction %></th>
+      </tr>
+        </table>
+      <%= link_to "",edit_user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>
+      <h1>New book</h1>
+          <%= form_for(@book) do |f| %>
+
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+
+    <h4>Opinion</h4>
+    <%= f.text_area :body %>
+
+<input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-9" data-disable-with="Create Book">
+        <% end %>
+       </div>
+
+  <div class='col-xs-9'>
+      <h2>Users</h2>
+      <table class='table'>
+          <thead>
+              <tr>
+                  <th>image</th>
+                  <th>name</th>
+                  <th></th>
+                  <th colspan=""></th>
+                </tr>
+          </thead>
+
+              <tbody>
+                 <% @users.each do |user| %>
+                 <tr>
+                  <td><span><%= attachment_image_tag user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%></span></td>
+                  <td><span><%= user.name %></span></span></td>
+                  <td><span><%= link_to "Show","/users/#{user.id}" %></span></td>
+                  </tr>
+                 <% end %>
+              </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
