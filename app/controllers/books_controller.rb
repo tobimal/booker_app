@@ -17,8 +17,8 @@ before_action :correct_user, only: [:edit, :update]
 
   def show
     @books = Book.all
-    @book_new = Book.new
     @book = Book.find(params[:id])
+    @book_new =Book.new
     @user = User.find(current_user.id)
     @users =User.all
 

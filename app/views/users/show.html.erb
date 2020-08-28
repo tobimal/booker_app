@@ -1,5 +1,21 @@
-f
-
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @user.errors.count %>errors prohibited this obj from being saved:
+</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    
+    <div class="flash">
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+<% end %>
+</div>
+    
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-xs-3">

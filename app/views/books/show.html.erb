@@ -1,3 +1,13 @@
+ <% if @book.errors.any? %>
+<div id=“error_explanation”>
+  <h2><%= @book.errors.count %>errors prohibited this obj from being saved:</h2>
+  <ul>
+   <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+   <% end %>
+  </ul>
+<% end %>
+</div>
 
 <div class="flash">
 <% flash.each do |key, value| %>
@@ -29,7 +39,7 @@
 
 
   <h1>New book</h1>
-    <%= form_for(@book) do |f| %>
+    <%= form_for(@book_new) do |f| %>
   <h4>Title</h4>
     <%= f.text_field :title %>
 
